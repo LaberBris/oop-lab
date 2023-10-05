@@ -1,0 +1,43 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+abstract class Game {
+}
+
+abstract class AbstractPublisher {
+    # subscribers : Subscriber
+    + attach(Subscriber subscriber):void
+    + {abstract} vertifyAll():void
+}
+
+interface Subscriber {
+    + update():void
+}
+
+class EnemyBulletList {
+    - enemyAircrafts:List<AbstractAircraft>
+    - enemyBullets:List<BaseBullet>
+    + EnemyBulletList(List<AbstractAircraft> enemyAircrafts, List<BaseBullet> enemyBullets)
+    + update():void
+
+}
+
+class EnemyList {
+    - enemyAircrafts:List<AbstractAircraft>
+    - enemyBullets:List<BaseBullet>
+    + EnemyList(List<AbstractAircraft> enemyAircrafts, List<BaseBullet> enemyBullets)
+    + update():void
+}
+
+class Publisher {
+    + vertifyAll():void
+}
+
+Publisher <.. Game
+AbstractPublisher <|.. Publisher
+AbstractPublisher *--> Subscriber
+Subscriber <|.. EnemyBulletList
+Subscriber <|.. EnemyList
+
+
+@enduml

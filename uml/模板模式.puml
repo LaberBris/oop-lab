@@ -1,0 +1,55 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+abstract class Game {
+    - cycleDuration:int
+    - enemyMaxNumber:int
+    - spawnBoss:bollean
+    - spawnThreshold:int
+    - spawnArray:double[]
+    - enemyHP:int[]
+    - beHarder:double
+    '
+    + action():void
+    + {abstract} degreeDefaultSet() : void
+    + beHarderEnemyHp(double[] enemyHp):double[]
+    +  beHarderEnemyNumber():int
+    + setter methods() for certain properties
+}
+
+class EasyGame {
+        - ratioArray：double[];
+        -  enemyHPsdouble:double[];
+        -  enhancement:double;
+        -  enemyMaxNumber:int
+        + beHarderEnemyHp(double[] enemyHp):double[]
+        +  beHarderEnemyNumber():int
+        + degreeDefaultSet() : void
+}
+
+class NormalGame {
+    - ratioArray：double[];
+    -  enemyHPsdouble:double[];
+    -  enhancement:double;
+    -  enemyMaxNumber:int
+    + beHarderEnemyHp(double[] enemyHp):double[]
+    +  beHarderEnemyNumber():int
+    + degreeDefaultSet() : void
+}
+
+class HardGame {
+    - ratioArray：double[];
+    -  enemyHPsdouble:double[];
+    -  enhancement:double;
+    -  enemyMaxNumber:int
+    + beHarderEnemyHp(double[] enemyHp):double[]
+    +  beHarderEnemyNumber():int
+    + degreeDefaultSet() : void
+}
+
+Game <|-- EasyGame
+Game <|-- NormalGame
+Game <|-- HardGame
+
+
+@enduml

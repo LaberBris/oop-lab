@@ -1,0 +1,52 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+@startuml
+'https://plantuml.com/component-diagram
+
+class game {}
+ game --> PrintRankingList
+
+interface RankinglistDao {
+    + getAllRanks() : List<Rankinglist>
+    + doAdd(Rankinglist rankinglist) : void
+    + doDelete(List<Rankinglist> rankinglists, String time) : void
+}
+
+RankinglistDao <|.. RankinglistDaompl
+
+class Rankinglist {
+    - username : String
+    - score : int
+    - time : String
+
+    + Rankinglist(String username, int score, String time) : void
+
+    + setUsername(String username) : void
+    + setScore(int score) : void
+    + setTime(String time) : void
+    + getUsername() : String
+    + getScore() : int
+    + getTime() : String
+}
+
+class RankinglistDaompl {
+    - rankinglists : List<Rankinglist>
+    + rFile() : void
+    + wFile(List<Rankinglist> rankinglists) : void
+    + clrFile() : void
+    + getAllRanks() : List<Rankinglist>
+    + doAdd(Rankinglist rankinglist) : void
+    + doDelete(List<Rankinglist> rankinglists, String time) : void
+
+}
+
+RankinglistDaompl --> Rankinglist
+
+class PrintRankingList {
+    + printRankList(int score, String username, boolean gameOverFlag) : void
+}
+
+PrintRankingList ..> RankinglistDao
+
+@enduml

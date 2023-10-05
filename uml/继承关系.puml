@@ -1,0 +1,38 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+abstract class AbstractFlyingObject
+abstract class AbstractAircraft
+abstract class BaseBullet
+abstract class BaseProp
+
+class HeroAircraft
+class EliteEnemy
+class MobEnemy
+class BossEnemy
+
+class HeroBullet
+class EnemyBullet
+
+class Prop_Blood
+class Prop_Bullet
+class Prop_Bomb
+
+
+AbstractFlyingObject <|- AbstractAircraft
+BaseProp -|>  AbstractFlyingObject
+AbstractFlyingObject <|-left BaseBullet
+
+AbstractAircraft <|-- HeroAircraft
+AbstractAircraft <|-- MobEnemy
+AbstractAircraft <|-- EliteEnemy
+AbstractAircraft <|-- BossEnemy
+
+BaseBullet <|-- HeroBullet
+BaseBullet <|-- EnemyBullet
+
+BaseProp <|-- Prop_Blood
+BaseProp <|-- Prop_Bullet
+BaseProp <|-- Prop_Bomb
+
+@enduml

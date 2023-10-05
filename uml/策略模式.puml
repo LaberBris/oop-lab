@@ -1,0 +1,74 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+@startuml
+'https://plantuml.com/component-diagram
+
+
+class HeroAircraft {
+    - {volatile static} heroAircraft:HeroAircraft
+    - shootNum:int
+    - power:int
+    - direction:int
+
+    - HeroAircraft(int locationX, int locationY, int speedX, int speedY, int hp)
+    + {static} getHeroAircraft(): HeroAircraft
+    + forward() : void
+    + addShootNum(int i) : void
+    + shoot():List<BaseBullet>
+}
+
+HeroAircraft --> ShootContext
+
+class BossEnemy {
+    - shootNum:int
+    - power:int
+    - direction:int
+    + EliteEnemy(int locationX, int locationY, int speedX, int speedY, int hp)
+    + forward():void
+    + shoot():List<BaseBullet>
+}
+
+BossEnemy --> ShootContext
+
+class EliteEnemy {
+    - shootNum:int
+    - power:int
+    - direction:int
+    + EliteEnemy(int locationX, int locationY, int speedX, int speedY, int hp)
+    + forward():void
+    + shoot():List<BaseBullet>
+}
+
+EliteEnemy --> ShootContext
+
+class ShootContext {
+    -shootStrategy : ShootStrategy
+    +ShootContext(ShootStrategy shootStrategy) : void
+    +setShootStrategy(ShootStrategy shootStrategy) : void
+    +excuteStrategy(AbstractAircraft aircraft, int direction, int shootNum, int power) ：List<BaseBullet>
+}
+
+class ShootDivergent {
+    +shootbullet(AbstractAircraft aircraft, int direction, int shootNum, int power): List<BaseBullet>
+}
+
+ShootStrategy <|.. ShootDivergent
+
+class ShootStrate {
+    +shootbullet(AbstractAircraft aircraft, int direction, int shootNum, int power): List<BaseBullet>
+}
+
+ShootStrategy <|.. ShootStrate
+
+interface ShootStrategy {
+    +shootbullet(AbstractAircraft aircraft, int direction, int shootNum, int power): List<BaseBullet>
+}
+
+ShootContext o--> ShootStrategy
+
+HeroAircraft ..> ShootStrate
+EliteEnemy ..> ShootStrate
+HeroAircraft ..> ShootDivergent
+BossEnemy ..> ShootDivergent
+@enduml

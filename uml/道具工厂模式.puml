@@ -1,0 +1,63 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+@startuml
+'https://plantuml.com/component-diagram
+
+class Game
+
+abstract class BaseProp
+{
+    + BaseProp(int locationX, int locationY, int speedX, int speedY)
+    + forward():void
+}
+Game ..> BaseProp
+
+interface PropFactory {
+    + {abstract} spawnProp : BaseProp
+}
+Game ..> PropFactory
+
+class Prop_BloodFactory {
+    + spawnProp(double locX, double locY) : BaseProp
+}
+PropFactory <|.. Prop_BloodFactory
+Prop_BloodFactory <.. Prop_Blood
+
+class Prop_BombFactory {
+    + spawnProp(double locX, double locY) : BaseProp
+}
+PropFactory <|.. Prop_BombFactory
+Prop_BombFactory <.. Prop_Bomb
+
+class Prop_BulletFactory {
+    + spawnProp(double locX, double locY) : BaseProp
+}
+PropFactory <|.. Prop_BulletFactory
+Prop_BulletFactory <.. Prop_Bullet
+
+class Prop_Blood {
+    + Prop_Blood(int locationX, int locationY,
+     int speedX, int speedY)
+    + func():void
+}
+Prop_Blood <|.. BaseProp
+
+class Prop_Bullet {
+    + Prop_Bullet(int locationX, int locationY,
+     int speedX, int speedY)
+    + func():void
+}
+Prop_Bullet <|.. BaseProp
+
+class Prop_Bomb {
+    + Prop_Bomb(int locationX, int locationY,
+     int speedX, int speedY)
+    + func():void
+}
+Prop_Bomb <|.. BaseProp
+
+
+
+
+@enduml

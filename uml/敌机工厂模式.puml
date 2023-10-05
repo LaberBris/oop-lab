@@ -1,0 +1,61 @@
+@startuml
+'https://plantuml.com/component-diagram
+
+class Game
+
+abstract class AbstractAircraft
+{
+	# maxHp:int
+    # hp:int
+    + AbstractAircraft(int locationX, int locationY, int speedX, int speedY, int hp)
+    + decreaseHp(int decrease):void
+    + getHp():int
+    + {abstract} shoot():List<BaseBullet>
+ }
+
+interface EnemyFactory {
+    + {abstract} spawnEnemy : AbstractAircraft
+}
+Game ..> AbstractAircraft
+Game ..> EnemyFactory
+
+class MobEnemy {
+    + MobEnemy(int locationX, int locationY, int speedX, int speedY, int hp)
+    + forward():void
+    + shoot():List<BaseBullet>
+}
+AbstractAircraft <|.. MobEnemy
+
+class EliteEnemy {
+    - shootNum:int
+    - power:int
+    - direction:int
+    + EliteEnemy(int locationX, int locationY, int speedX, int speedY, int hp)
+    + forward():void
+    + shoot():List<BaseBullet>
+}
+AbstractAircraft <|.. EliteEnemy
+
+class BossEnemy {
+}
+AbstractAircraft <|.. BossEnemy
+
+class MobEnemyFactory {
+    + spawnEnemy : AbstractAircraft
+}
+EnemyFactory ..|> MobEnemyFactory
+MobEnemyFactory <.. MobEnemy
+
+class EliteEnemyFactory {
+    + spawnEnemy : AbstractAircraft
+}
+EnemyFactory <|.. EliteEnemyFactory
+EliteEnemyFactory <.. EliteEnemy
+
+class BossEnemyFactory {
+    + spawnEnemy : AbstractAircraft
+}
+EnemyFactory <|.. BossEnemyFactory
+BossEnemyFactory <.. BossEnemy
+
+@enduml
