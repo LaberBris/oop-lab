@@ -26,10 +26,10 @@ Boss机:
 ![Boss机](src/images/boss.png)
 
 Background1:
-![Background1](src/images/bg.png)
+![Background1](src/images/bg.jpg)
 
 Background3:
-![Background3](src/images/bg3.png)
+![Background3](src/images/bg3.jpg)
 
 Background5:
-![Background5](src/images/bg5.png)
+![Background5](src/images/bg5.jpg)
