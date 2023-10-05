@@ -13,12 +13,23 @@
 
 ## 贴图设计
 
+英雄机:
 ![英雄机](src/images/hero.png)
 
+普通敌机:
 ![普通敌机](src/images/mob.png)
 
+精英敌机:
 ![精英敌机](src/images/elite.png)
 
+Boss机:
 ![Boss机](src/images/boss.png)
 
-![Background1](src/images/bg1.png)
+Background1:
+![Background1](src/images/bg.png)
+
+Background3:
+![Background3](src/images/bg3.png)
+
+Background5:
+![Background5](src/images/bg5.png)
